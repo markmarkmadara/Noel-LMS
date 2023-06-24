@@ -1,4 +1,5 @@
 # Noel-LMS
+<<<<<<< HEAD
 small scall lms
 ```powershell
 # Create python virtual environment
@@ -13,3 +14,6 @@ python -m venv .venv
 # Run Flask Application
 (.venv) flask run
 ```
+=======
+small scale lms
+>>>>>>> 81121f688fa956ea6a49b0040cba69b8a5e6baff
