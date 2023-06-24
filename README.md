@@ -1,2 +1,2 @@
 # Noel-LMS
-small scall lms
+small scale lms
