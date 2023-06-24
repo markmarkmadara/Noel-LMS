@@ -1,8 +1,45 @@
-from flask import Flask, render_template, request, redirect, session, flash
 import sqlite3
 
-app = Flask(__name__)
+from flask import (
+    Flask,
+    flash,
+    redirect,
+    render_template,
+    request,
+    send_from_directory,
+    session,
+)
+
+from flask_vite import Vite
+
+
+class FlaskVue(Flask):
+    jinja_options = Flask.jinja_options.copy()
+    jinja_options.update(
+        dict(
+            block_start_string="<%",
+            block_end_string="%>",
+            variable_start_string="[[",
+            variable_end_string="]]",
+            comment_start_string="<#",
+            comment_end_string="#>",
+        )
+    )
+
+
+app = FlaskVue(__name__, static_folder="static")
+app.config["VITE_DEV_MODE"] = app.config.get("DEBUG")
 app.secret_key = "your-secret-key"
+
+Vite(app)
+
+
+@app.route("/src/assets/<path:path>")
+def serve_vite_assets(path):
+    if app.config.get("DEBUG"):
+        return send_from_directory("./src/assets/", path)
+    else:
+        return ("Missing resource", 404)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -12,7 +49,7 @@ def login():
         password = request.form["password"]
 
         # Check if the username and password match a user in the database
-        conn = sqlite3.connect("database.db")
+        conn = sqlite3.connect("./database/database.db")
         c = conn.cursor()
         c.execute(
             "SELECT * FROM users WHERE username=? AND password=?", (username, password)
@@ -34,7 +71,7 @@ def login():
 def dashboard():
     if "user_id" in session:
         # Connect to the database
-        conn = sqlite3.connect("database.db")
+        conn = sqlite3.connect("./database/database.db")
         c = conn.cursor()
 
         # Get the user ID from the session
@@ -82,7 +119,7 @@ def register():
             return redirect("/register")
 
         # Check if the username already exists in the database
-        conn = sqlite3.connect("database.db")
+        conn = sqlite3.connect("./database/database.db")
         c = conn.cursor()
         c.execute("SELECT * FROM users WHERE username=?", (username,))
         existing_user = c.fetchone()
@@ -93,7 +130,7 @@ def register():
         else:
             # Insert the new user into the database
             c.execute(
-                "INSERT INTO users (username, password, full_name, gender, address, email, contact_number) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO users (username, password, full_name, gender, address, email, contact_number) VALUES (?, ?, ?, ?, ?, ?, ?)",  # noqa: E501
                 (
                     username,
                     password,
@@ -112,4 +149,8 @@ def register():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=8000,
+        debug=True,
+    )

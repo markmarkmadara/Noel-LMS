@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Flask User Login</title>
-</head>
-<body>
-    <center>
-    <h1>Welcome to Bestlink College of the Philippines</h1>
-    <p>At Bestlink College of the Philippines, We provide and promote quality education with modern and unique techniques to able to enhance the skill and the knowledge of our dear students to make them globally competitive and productive citizens.</p>
-    <p>
-        <a href="/register">Register</a> | 
-        <a href="/login">Login</a>
-    </p>
-    </center>
-</body>
+<html lang="en">
+  <head>
+    <% include 'header.html' %> [[ vite_asset('src/pages/home/home.js') ]]
+  </head>
+  <body>
+    <div id="home-app"></div>
+  </body>
 </html>

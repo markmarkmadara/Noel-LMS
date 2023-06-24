@@ -1,7 +1,33 @@
 {
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  },
-  "python.formatting.provider": "none",
-  "cSpell.words": ["regs", "signup", "venv"]
+  "recommendations": ["Vue.volar", "Vue.vscode-typescript-vue-plugin"],
+  "cSpell.words": [
+    "adipisicing",
+    "aliqua",
+    "aliquip",
+    "amet",
+    "appcontext",
+    "commodo",
+    "consectetur",
+    "consequat",
+    "dolore",
+    "eiusmod",
+    "elit",
+    "enim",
+    "incididunt",
+    "labore",
+    "laboris",
+    "nostrud",
+    "quis",
+    "regs",
+    "signup",
+    "tailwindcss",
+    "tempor",
+    "ullamco",
+    "veniam",
+    "venv",
+    "vite",
+    "Vite",
+    "VITE"
+  ],
+  "python.analysis.typeCheckingMode": "off"
 }
