@@ -261,6 +261,90 @@ def update_user():
         return redirect("/")
 
 
+@app.route("/update_admin", methods=["GET", "POST"])
+def update_admin():
+    if "user_id" in session:
+        if request.method == "POST":
+            # Retrieve the form data
+            username = request.form.get("username")
+            password = request.form.get("password")
+            confirm_password = request.form.get("confirm_password")
+            full_name = request.form.get("full_name")
+            contact_number = request.form.get("contact_number")
+            email = request.form.get("email")
+            address = request.form.get("address")
+
+            # Basic form validation
+            if (
+                not username
+                or not password
+                or not confirm_password
+                or not full_name
+                or not contact_number
+                or not email
+                or not address
+            ):
+                flash("Please fill in all the fields", "error")
+                return redirect("/update")
+
+            if password != confirm_password:
+                flash("Password and confirm password do not match", "error")
+                return redirect("/update")
+
+            # Connect to the database and update the user information
+            conn = sqlite3.connect("database.db")
+            c = conn.cursor()
+
+            # Get the user ID from the session
+            user_id = session["user_id"]
+
+            # Update the user information in the database
+            c.execute(
+                "UPDATE users SET username=?, password=?, full_name=?, contact_number=?, email=?, address=? WHERE id=?",  # noqa: E501
+                (
+                    username,
+                    password,
+                    full_name,
+                    contact_number,
+                    email,
+                    address,
+                    user_id,
+                ),
+            )
+
+            # Commit the changes and close the database connection
+            conn.commit()
+            conn.close()
+
+            flash("User information updated successfully", "success")
+            return redirect("/admin_profile")
+        else:
+            # Retrieve the user details and render the edit form
+            # Connect to the database
+            conn = sqlite3.connect("database.db")
+            c = conn.cursor()
+
+            # Get the user ID from the session
+            user_id = session["user_id"]
+
+            # Retrieve the user details from the database
+            c.execute("SELECT * FROM users WHERE id=?", (user_id,))
+            user = c.fetchone()
+
+            # Check if the user exists
+            if user is None:
+                flash("User not found", "error")
+                return redirect("/")
+
+            # Close the database connection
+            conn.close()
+
+            # Pass the user details to the template for rendering
+            return render_template("admin_edit.html", user=user)
+    else:
+        return redirect("/")
+
+
 @app.route("/logout")
 def logout():
     session.clear()

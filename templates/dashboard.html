@@ -10,7 +10,7 @@
     <!-- Boxicons CSS -->
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <script src={{ url_for('static', filename='script.js') }} defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
   </head>
   <body>
     <nav class="sidebar locked">
@@ -37,7 +37,7 @@
               </a>
             </li>
             <li class="item">
-              <a href="#" class="link flex">
+              <a href="/courses" class="link flex">
                 <i class="bx bx-grid-alt"></i>
                 <span>Courses</span>
               </a>
@@ -111,11 +111,6 @@
                 <th width="30%">Address	</th>
                 <td width="2%">:</td>
                 <td>{{ user[5] }}</td>
-              </tr>
-              <tr>
-                <th width="30%">Gender</th>
-                <td width="2%">:</td>
-                <td>Male</td>
               </tr>
               <tr>
                 <th width="30%">Contact Number</th>
