@@ -442,7 +442,7 @@ def register():
         email = request.form["email"]
         contact_number = request.form["contact_number"]
         gender = request.form["gender"]
-        is_admin = request.form["is_admin"]
+        is_admin = request.form.get("is_admin") == "on"
 
         # Check if the password and confirm password fields match
         if password != confirm_password:
