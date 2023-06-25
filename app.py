@@ -418,5 +418,117 @@ def register():
     return render_template("register.html", is_admin=is_admin)
 
 
+@app.route("/fec_week1")
+def week1():
+    if "user_id" in session:
+        # Connect to the database
+        conn = sqlite3.connect("database.db")
+        c = conn.cursor()
+
+        # Get the user ID from the session
+        user_id = session["user_id"]
+
+        # Retrieve the user details from the database
+        c.execute("SELECT * FROM users WHERE id=?", (user_id,))
+        user = c.fetchone()
+
+        # Close the database connection
+        conn.close()
+
+        # Check if the user exists
+        if user is None:
+            flash("User not found", "error")
+            return redirect("/")
+
+        # Pass the user details to the template for rendering
+        return render_template("Electronics/fec_week1.html", user=user)
+    else:
+        return redirect("/")
+
+
+@app.route("/fec_week2")
+def fec_week2():
+    if "user_id" in session:
+        # Connect to the database
+        conn = sqlite3.connect("database.db")
+        c = conn.cursor()
+
+        # Get the user ID from the session
+        user_id = session["user_id"]
+
+        # Retrieve the user details from the database
+        c.execute("SELECT * FROM users WHERE id=?", (user_id,))
+        user = c.fetchone()
+
+        # Close the database connection
+        conn.close()
+
+        # Check if the user exists
+        if user is None:
+            flash("User not found", "error")
+            return redirect("/")
+
+        # Pass the user details to the template for rendering
+        return render_template("Software/fec_week2.html", user=user)
+    else:
+        return redirect("/")
+
+
+@app.route("/sd_week1")
+def sd_week1():
+    if "user_id" in session:
+        # Connect to the database
+        conn = sqlite3.connect("database.db")
+        c = conn.cursor()
+
+        # Get the user ID from the session
+        user_id = session["user_id"]
+
+        # Retrieve the user details from the database
+        c.execute("SELECT * FROM users WHERE id=?", (user_id,))
+        user = c.fetchone()
+
+        # Close the database connection
+        conn.close()
+
+        # Check if the user exists
+        if user is None:
+            flash("User not found", "error")
+            return redirect("/")
+
+        # Pass the user details to the template for rendering
+        return render_template("Software/sd_week1.html", user=user)
+    else:
+        return redirect("/")
+
+
+@app.route("/sd_week2")
+def sd_week2():
+    if "user_id" in session:
+        # Connect to the database
+        conn = sqlite3.connect("database.db")
+        c = conn.cursor()
+
+        # Get the user ID from the session
+        user_id = session["user_id"]
+
+        # Retrieve the user details from the database
+        c.execute("SELECT * FROM users WHERE id=?", (user_id,))
+        user = c.fetchone()
+
+        # Close the database connection
+        conn.close()
+
+        # Check if the user exists
+        if user is None:
+            flash("User not found", "error")
+            return redirect("/")
+
+        # Pass the user details to the template for rendering
+        return render_template("Electronics/sd_week2.html", user=user)
+    else:
+        return redirect("/")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
