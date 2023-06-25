@@ -6,17 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style-courses.css') }}"
+    />
     <!-- Boxicons CSS -->
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      flex
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <script src={{ url_for('static', filename='script.js') }} defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
   </head>
+
   <body>
     <nav class="sidebar locked">
       <div class="logo_items flex">
         <span class="nav_image">
-          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo_img" />
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="logo_img"
+          />
         </span>
         <span class="logo_name">BCP</span>
         <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
@@ -51,31 +62,90 @@
             </div>
             <li class="item">
               <a href="/dashboard" class="link flex">
-                <i class="bx:user"><iconify-icon icon="bx:user"></iconify-icon></i>
+                <i class="bx:user"
+                  ><iconify-icon icon="bx:user"></iconify-icon
+                ></i>
                 <span>Profile</span>
               </a>
             </li>
             <li class="item">
               <a href="/logout" class="link flex">
-                <i class="bx bx:log-out-circle"><iconify-icon icon="bx:log-out-circle"></iconify-icon></i>
+                <i class="bx bx:log-out-circle"
+                  ><iconify-icon icon="bx:log-out-circle"></iconify-icon
+                ></i>
                 <span>Logout</span>
               </a>
             </li>
           </ul>
-          </ul>
         </div>
 
         <div class="sidebar_profile flex">
-            <span class="nav_image">
-              <img src="{{ url_for('static', filename='images/pfp.png') }}" alt="logo_img" />
-            </span>
-            <div class="data_text">
-              <span class="name">{{ user[3] }}</span>
-              <span class="email">{{ user[6] }}</span>
-            </div>
+          <span class="nav_image">
+            <img
+              src="{{ url_for('static', filename='images/pfp.png') }}"
+              alt="logo_img"
+            />
+          </span>
+          <div class="data_text">
+            <span class="name">{{ user[3] }}</span>
+            <span class="email">{{ user[6] }}</span>
           </div>
+        </div>
       </div>
     </nav>
 
+    <section class="home-section">
+      <div class="container">
+        <div class="title">CPE 221</div>
+        <div class="course-container">
+          <div class="course">
+            <div class="course-title">Week 1</div>
+            <div class="course-content">
+              <div class="course-content-title">Content Title 1</div>
+              <div class="course-content-description">
+                <a href="#">Read Week - 1</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="course">
+            <div class="course-title">Week 2</div>
+            <div class="course-content">
+              <div class="course-content-title">Content Title 2</div>
+              <div class="course-content-description">
+                <a href="#">Read Week - 2</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="title">CPE 222</div>
+        <div class="course-container">
+          <div class="course">
+            <div class="course-title">Week 1</div>
+            <div class="course-content">
+              <div class="course-content-title">Content Title 1</div>
+              <div class="course-content-description">
+                <a href="#">Read Week - 1</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="course">
+            <div class="course-title">Week 2</div>
+            <div class="course-content">
+              <div class="course-content-title">Content Title 2</div>
+              <div class="course-content-description">
+                <a href="#">Read Week - 2</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

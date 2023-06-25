@@ -7,11 +7,12 @@
 }
 body {
   height: 100vh;
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   padding: 10px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  align-content: start;
 }
 .regs {
   background: linear-gradient(135deg, #50c8c8, #4c7be7);
@@ -20,14 +21,13 @@ body {
   max-width: 700px;
   width: 100%;
   background-color: #fff;
-  padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 .container .title {
   font-size: 25px;
   font-weight: 500;
-  position: relative;
+  padding: 10px 10px;
 }
 .container .title::before {
   content: "";
@@ -35,7 +35,7 @@ body {
   left: 0;
   bottom: 0;
   height: 3px;
-  width: 30px;
+  width: 100px;
   border-radius: 5px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
@@ -546,4 +546,44 @@ body {
   font-size: 14px;
   padding: 5px 10px;
   color: #000;
+}
+
+.home-section {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+  background-color: aqua;
+}
+
+.course-container {
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  width: 700px;
+}
+
+.course-content-description {
+  margin: 1em;
+}
+
+.course-content-description a {
+  color: #fff;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  background: linear-gradient(0deg, #50c8c8, #4158d0);
+  transition: all 0.5s ease-out;
+}
+
+.course-content-description a:hover,
+a:focus {
+  color: #fff;
+  background: linear-gradient(-135deg, #50c8c8, #4158d0);
 }
