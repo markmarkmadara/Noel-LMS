@@ -1,33 +1,16 @@
 {
-  "recommendations": ["Vue.volar", "Vue.vscode-typescript-vue-plugin"],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.formatting.provider": "none",
   "cSpell.words": [
-    "adipisicing",
-    "aliqua",
-    "aliquip",
-    "amet",
-    "appcontext",
-    "commodo",
-    "consectetur",
-    "consequat",
-    "dolore",
-    "eiusmod",
-    "elit",
-    "enim",
-    "incididunt",
-    "labore",
-    "laboris",
-    "nostrud",
-    "quis",
+    "Bestlink",
+    "Boxicons",
+    "codingnepalweb",
+    "hoverability",
+    "hoverable",
+    "iconify",
     "regs",
-    "signup",
-    "tailwindcss",
-    "tempor",
-    "ullamco",
-    "veniam",
-    "venv",
-    "vite",
-    "Vite",
-    "VITE"
-  ],
-  "python.analysis.typeCheckingMode": "off"
+    "signup"
+  ]
 }

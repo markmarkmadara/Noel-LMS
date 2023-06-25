@@ -70,12 +70,30 @@
               <img src="{{ url_for('static', filename='images/pfp.png') }}" alt="logo_img" />
             </span>
             <div class="data_text">
-              <span class="name">{{ user[3] }}</span><br>
+              <span class="name">{{ user[3] }}</span>
               <span class="email">{{ user[6] }}</span>
             </div>
           </div>
       </div>
     </nav>
+
+    <center>
+        <div class="container">
+            <h1>Welcome, {{ user[1] }}!</h1>
+            <h2>User Details:</h2>
+            <ul>
+            <h3>
+                <li>Username: {{ user[1] }}</li>
+                <li>Full Name: {{ user[3] }}</li>
+                <li>Gender: {{ user[4] }}</li>
+                <li>Address: {{ user[5] }}</li>
+                <li>Email: {{ user[6] }}</li>
+                <li>Contact Number: {{ user[7] }}</li>
+            </h3>
+            </ul>
+            <h2><a href="/update">Edit Profile</a></h2>
+        </div>
+        </center>
 
   </body>
 </html>

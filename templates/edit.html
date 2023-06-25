@@ -70,12 +70,59 @@
               <img src="{{ url_for('static', filename='images/pfp.png') }}" alt="logo_img" />
             </span>
             <div class="data_text">
-              <span class="name">{{ user[3] }}</span><br>
+              <span class="name">{{ user[3] }}</span>
               <span class="email">{{ user[6] }}</span>
             </div>
           </div>
       </div>
     </nav>
+
+    <center>
+        <div class="container">
+            <h1>Edit Profile</h1>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="flash-messages">
+                  {% for message in messages %}
+                    <div class="flash-message {{ message[1] }}">{{ message[0] }}</div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <form action="/update" method="POST">
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="{{ user[1] }}" required>
+              </div>
+              <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" name="password" value="" required>
+              </div>
+              <div class="form-group">
+                  <label for="confirm_password">Confirm Password:</label>
+                  <input type="password" id="confirm_password" name="confirm_password" value="" required>
+              </div>
+              <div class="form-group">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" value="{{ user[3] }}" required>
+              </div>
+              <div class="form-group">
+                  <label for="contact_number">Contact Number:</label>
+                  <input type="text" id="contact_number" name="contact_number" value="{{ user[7] }}" required>
+                </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ user[6] }}" required>
+              </div>
+              <div class="form-group">
+                  <label for="address">Address:</label>
+                  <input type="textarea" id="address" name="address" value="{{ user[5] }}" required>
+              </div>
+              <button type="submit" class="btn">Update</button>
+            </form>
+          </div>
+        </center>
 
   </body>
 </html>
