@@ -351,6 +351,41 @@ def logout():
     return redirect("/")
 
 
+@app.route("/admin_students")
+def admin_students():
+    if "user_id" in session:
+        # Connect to the database
+        conn = sqlite3.connect("database.db")
+        c = conn.cursor()
+
+        # Get the user ID from the session
+        user_id = session["user_id"]
+
+        # Retrieve the user details from the database
+        c.execute("SELECT * FROM users WHERE id=?", (user_id,))
+        user = c.fetchone()
+
+        # Check if the user exists
+        if user is None:
+            flash("User not found", "error")
+            return redirect("/")
+    else:
+        user = None
+
+    # Connect to the database
+    conn = sqlite3.connect("database.db")
+    c = conn.cursor()
+
+    # Retrieve the non-admin users from the database
+    c.execute("SELECT * FROM users WHERE is_admin=0")
+    non_admin_users = c.fetchall()
+
+    # Close the database connection
+    conn.close()
+
+    return render_template("admin_students.html", user=user, users=non_admin_users)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if "user_id" in session:
@@ -469,7 +504,7 @@ def fec_week2():
             return redirect("/")
 
         # Pass the user details to the template for rendering
-        return render_template("Software/fec_week2.html", user=user)
+        return render_template("Electronics/fec_week2.html", user=user)
     else:
         return redirect("/")
 
@@ -525,7 +560,7 @@ def sd_week2():
             return redirect("/")
 
         # Pass the user details to the template for rendering
-        return render_template("Electronics/sd_week2.html", user=user)
+        return render_template("Software/sd_week2.html", user=user)
     else:
         return redirect("/")
 
