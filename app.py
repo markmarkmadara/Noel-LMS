@@ -149,6 +149,34 @@ def dashboard():
         return redirect("/")
 
 
+@app.route("/courses")
+def courses():
+    if "user_id" in session:
+        # Connect to the database
+        conn = sqlite3.connect("database.db")
+        c = conn.cursor()
+
+        # Get the user ID from the session
+        user_id = session["user_id"]
+
+        # Retrieve the user details from the database
+        c.execute("SELECT * FROM users WHERE id=?", (user_id,))
+        user = c.fetchone()
+
+        # Close the database connection
+        conn.close()
+
+        # Check if the user exists
+        if user is None:
+            flash("User not found", "error")
+            return redirect("/")
+
+        # Pass the user details to the template for rendering
+        return render_template("courses.html", user=user)
+    else:
+        return redirect("/")
+
+
 @app.route("/update", methods=["GET", "POST"])
 def update_user():
     if "user_id" in session:
