@@ -6,17 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style-courses.css') }}"
+    />
     <!-- Boxicons CSS -->
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      flex
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
   </head>
+
   <body>
     <nav class="sidebar locked">
       <div class="logo_items flex">
         <span class="nav_image">
-          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo_img" />
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="logo_img"
+          />
         </span>
         <span class="logo_name">BCP</span>
         <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
@@ -78,79 +89,72 @@
         </div>
 
         <div class="sidebar_profile flex">
-            <span class="nav_image">
-              <img src="{{ url_for('static', filename='images/pfp.png') }}" alt="logo_img" />
-            </span>
-            <div class="data_text">
-              <span class="name">{{ user[3] }}</span><br>
-              <span class="email">{{ user[6] }}</span>
-            </div>
+          <span class="nav_image">
+            <img
+              src="{{ url_for('static', filename='images/pfp.png') }}"
+              alt="logo_img"
+            />
+          </span>
+          <div class="data_text">
+            <span class="name">{{ user[3] }}</span>
+            <span class="email">{{ user[6] }}</span>
           </div>
+        </div>
       </div>
     </nav>
 
-    <div class="container">
-        <center> <h1>Welcome, {{ user[1] }}!</h1>
-          <h2>User Details</h2></center>
-          {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <div class="flash-messages">
-              {% for message in messages %}
-                <div class="flash-message {{ message[1] }}">{{ message[0] }}</div>
-              {% endfor %}
+    <section class="home-section">
+      <div class="container">
+        <div class="title">CPE 221</div>
+        <div class="course-container">
+          <div class="course">
+            <div class="course-title">Week 1</div>
+            <div class="course-content">
+              <div class="course-content-title">Content Title 1</div>
+              <div class="course-content-description">
+                <a href="#">Read Week - 1</a>
+              </div>
             </div>
-          {% endif %}
-        {% endwith %}
-      <!-- Student Profile -->
-<div class="student-profile py-4">
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="card shadow-sm">
-        <div class="card-header bg-transparent text-center">
-          <center><img class="profile_img" src="{{ url_for('static', filename='images/pfp.png') }}" alt=""></center>
-          <h3>Full Name: {{ user[3] }}</h3>
-        </div>
-        <div class="card-body">
-          <p class="mb-0"><strong class="pr-1">Username:</strong> {{ user[1] }}</p>
+          </div>
+
+          <div class="course">
+            <div class="course-title">Week 2</div>
+            <div class="course-content">
+              <div class="course-content-title">Content Title 2</div>
+              <div class="course-content-description">
+                <a href="#">Read Week - 2</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-8">
-      <div class="card shadow-sm">
-        <div class="card-header bg-transparent border-0">
-          <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
-        </div>
-        <div class="card-body pt-0">
-          <table class="table table-bordered">
-            <tr>
-              <th width="30%">Gender</th>
-              <td width="2%">:</td>
-              <td>{{ user[4] }}</td>
-            </tr>
-            <tr>
-              <th width="30%">Address	</th>
-              <td width="2%">:</td>
-              <td>{{ user[5] }}</td>
-            </tr>
-            <tr>
-              <th width="30%">Contact Number</th>
-              <td width="2%">:</td>
-              <td>{{ user[7] }}</td>
-            </tr>
-            <tr>
-              <th width="30%">Email</th>
-              <td width="2%">:</td>
-              <td>{{ user[6] }}</td>
-            </tr>
-          </table>
-          <center><h1><a href="/update_admin" style="text-decoration: none; color: black;">Edit Profile</a></h1></center>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="title">CPE 222</div>
+        <div class="course-container">
+          <div class="course">
+            <div class="course-title">Week 1</div>
+            <div class="course-content">
+              <div class="course-content-title">Content Title 1</div>
+              <div class="course-content-description">
+                <a href="#">Read Week - 1</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="course">
+            <div class="course-title">Week 2</div>
+            <div class="course-content">
+              <div class="course-content-title">Content Title 2</div>
+              <div class="course-content-description">
+                <a href="#">Read Week - 2</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
+    </section>
   </body>
 </html>
