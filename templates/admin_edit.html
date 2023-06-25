@@ -50,11 +50,17 @@
               <span class="line"></span>
             </div>
             <li class="item">
-              <a href="/dashboard" class="link flex">
-                <i class="bx:user"><iconify-icon icon="bx:user"></iconify-icon></i>
-                <span>Profile</span>
-              </a>
-            </li>
+                <a href="/admin_profile" class="link flex">
+                  <i class="bx:user"><iconify-icon icon="bx:user"></iconify-icon></i>
+                  <span>Admin Profile</span>
+                </a>
+              </li>
+              <li class="item">
+                  <a href="/register" class="link flex">
+                    <i class="bx:user"><iconify-icon icon="bx:user"></iconify-icon></i>
+                    <span>Register Admin</span>
+                  </a>
+                </li>
             <li class="item">
               <a href="/logout" class="link flex">
                 <i class="bx bx:log-out-circle"><iconify-icon icon="bx:log-out-circle"></iconify-icon></i>
@@ -80,19 +86,20 @@
     
 
         <div class="container">
+            
           <center> <h1>Welcome, {{ user[1] }}!</h1>
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                <div class="flash-messages">
-                  {% for message in messages %}
-                    <div class="flash-message {{ message[1] }}">{{ message[0] }}</div>
-                  {% endfor %}
-                </div>
-              {% endif %}
-            {% endwith %}
             <h2>User Details</h2></center>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <div class="flash-messages">
+                {% for message in messages %}
+                  <div class="flash-message {{ message[1] }}">{{ message[0] }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
         <!-- Student Profile -->
-        <form action="/update" method="POST">
+        <form action="/update_admin" method="POST">
 <div class="student-profile py-4">
   <div class="container">
     <div class="row">
@@ -148,7 +155,7 @@
             </table>
             <center>
               <button type="submit" class="btn">Update</button>
-              <h1><a href="/update" style="text-decoration: none; color: black;">Edit Profile</a></h1>
+              <h1><a href="/update_admin" style="text-decoration: none; color: black;">Edit Profile</a></h1>
             </center>
           </div>
         </div>
