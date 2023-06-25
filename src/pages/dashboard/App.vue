@@ -1,0 +1,17 @@
+<script setup></script>
+
+<template>
+  <aside></aside>
+</template>
+
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f5f5;
+}
+</style>

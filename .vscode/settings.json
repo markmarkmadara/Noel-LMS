@@ -12,7 +12,9 @@
     "dolore",
     "eiusmod",
     "elit",
+    "endwith",
     "enim",
+    "fontsource",
     "incididunt",
     "labore",
     "laboris",
@@ -22,12 +24,14 @@
     "signup",
     "tailwindcss",
     "tempor",
+    "Transpt",
     "ullamco",
     "veniam",
     "venv",
     "vite",
     "Vite",
-    "VITE"
+    "VITE",
+    "wtforms"
   ],
   "python.analysis.typeCheckingMode": "off"
 }

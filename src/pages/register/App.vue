@@ -4,7 +4,6 @@ import PageNav from '@/components/PageNav.vue'
 
 <template>
   <div>
-    <div class="text-center text-lg text-blue-500">TailwindCSS Sample</div>
     <PageNav></PageNav>
   </div>
 </template>

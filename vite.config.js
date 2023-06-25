@@ -21,7 +21,8 @@ export default defineConfig(({ mode }) => {
         input: {
           home: resolve(__dirname, 'src/pages/home/home.js'),
           login: resolve(__dirname, 'src/pages/login/login.js'),
-          signup: resolve(__dirname, 'src/pages/signup/signup.js'),
+          signup: resolve(__dirname, 'src/pages/register/register.js'),
+          dashboard: resolve(__dirname, 'src/pages/dashboard/dashboard.js'),
         },
       },
     },

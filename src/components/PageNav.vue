@@ -1,5 +1,4 @@
 <script setup>
-import tomatoLogo from '@/assets/icons/tomato.svg'
 // grab everything we need
 const btn = document.querySelector('button.mobile-menu-button')
 const menu = document.querySelector('.mobile-menu')
@@ -72,7 +71,7 @@ window.onload = function () {
 
             <!-- primary nav -->
             <div class="hidden md:flex items-center space-x-1">
-              <a href="#" class="py-5 px-3 text-gray-700 hover:text-red-500"
+              <a href="/" class="py-5 px-3 text-gray-700 hover:text-red-500"
                 >Home</a
               >
               <a href="#" class="py-5 px-3 text-gray-700 hover:text-red-500"
@@ -87,9 +86,9 @@ window.onload = function () {
               >Login</a
             >
             <a
-              href=""
+              href="/register"
               class="py-2 px-3 bg-red-800 hover:bg-red-600 text-gray-100 hover:text-gray-200 rounded transition duration-300"
-              >Signup</a
+              >Register</a
             >
           </div>
 
