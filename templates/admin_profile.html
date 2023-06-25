@@ -83,22 +83,64 @@
       </div>
     </nav>
 
-    <center>
-        <div class="container">
-            <h1>Welcome, {{ user[1] }}!</h1>
-            <h2>User Details:</h2>
-            <ul>
-            <h3>
-                <li>Username: {{ user[1] }}</li>
-                <li>Full Name: {{ user[3] }}</li>
-                <li>Gender: {{ user[4] }}</li>
-                <li>Address: {{ user[5] }}</li>
-                <li>Email: {{ user[6] }}</li>
-                <li>Contact Number: {{ user[7] }}</li>
-            </h3>
-            </ul>
-            <h2><a href="/update">Edit Profile</a></h2>
+    <div class="container">
+        <center> <h1>Welcome, {{ user[1] }}!</h1>
+          <h2>User Details</h2></center>
+      <!-- Student Profile -->
+<div class="student-profile py-4">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-transparent text-center">
+          <center><img class="profile_img" src="{{ url_for('static', filename='images/pfp.png') }}" alt=""></center>
+          <h3>Full Name: {{ user[3] }}</h3>
         </div>
-    </center>
+        <div class="card-body">
+          <p class="mb-0"><strong class="pr-1">Username:</strong> {{ user[1] }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+        </div>
+        <div class="card-body pt-0">
+          <table class="table table-bordered">
+            <tr>
+              <th width="30%">Gender</th>
+              <td width="2%">:</td>
+              <td>{{ user[4] }}</td>
+            </tr>
+            <tr>
+              <th width="30%">Address	</th>
+              <td width="2%">:</td>
+              <td>{{ user[5] }}</td>
+            </tr>
+            <tr>
+              <th width="30%">Gender</th>
+              <td width="2%">:</td>
+              <td>Male</td>
+            </tr>
+            <tr>
+              <th width="30%">Contact Number</th>
+              <td width="2%">:</td>
+              <td>{{ user[7] }}</td>
+            </tr>
+            <tr>
+              <th width="30%">Email</th>
+              <td width="2%">:</td>
+              <td>{{ user[6] }}</td>
+            </tr>
+          </table>
+          <center><h1><a href="/update" style="text-decoration: none; color: black;">Edit Profile</a></h1></center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
   </body>
 </html>
