@@ -6,14 +6,11 @@
   font-family: "Poppins", sans-serif;
 }
 
-html {
-  margin: 0;
-  padding: 0;
-}
 
 
 body {
-  display: grid;
+  height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
@@ -23,30 +20,28 @@ body {
   background: linear-gradient(135deg, #50c8c8, #4c7be7);
 }
 .container {
-  max-width: 700px;
+  max-width: 800px;
   width: 100%;
   background-color: #fff;
+  padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 .container .title {
   font-size: 25px;
   font-weight: 500;
-  padding: 10px 10px;
+  position: relative;
 }
-
-/*
 .container .title::before {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   height: 3px;
-  width: 100px;
+  width: 30px;
   border-radius: 5px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
-*/
 .content form .user-details {
   display: flex;
   flex-wrap: wrap;
@@ -163,7 +158,14 @@ form .button input:hover {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
+html,
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+}
 ::selection {
   background: #4158d0;
   color: #fff;
@@ -326,7 +328,7 @@ body {
   top: 0;
   left: 0;
   height: 100%;
-  width: 400px;
+  width: 320px;
   background: #fff;
   padding: 15px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
@@ -548,195 +550,108 @@ body {
   color: #000;
 }
 
-.home-section {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1em;
-  background-color: aqua;
-}
-
-/* Course Content */
-
-.home-section {
-  padding: 40px 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-.title-cpe {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.course-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.course {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 20px;
-}
-
-.course-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.course-content {
-  margin-bottom: 10px;
-}
-
-.course-content-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.course-content-description {
-  display: flex;
-  align-items: center;
-}
-
-.course-content-description a {
-  margin-right: 10px;
-  text-decoration: none;
+/*student lists */
+.heading {
   color: #333;
+  margin-bottom: 20px;
 }
 
-.delete-btn-course {
-  background-color: #f44336;
+.user-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* User Form Edit in Admin Dashboard */
+.edit-delete-container {
+  display: flex;
+  align-items: center;
+}
+
+.edit-form {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.edit-form button,
+.delete-form button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #4caf50;
   color: #fff;
   border: none;
-  padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.delete-btn-course:hover {
-  background-color: #d32f2f;
+.delete-form button {
+  background-color: #f44336;
 }
 
-.course-container {
-  padding-right: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  width: 700px;
+/* CSS styling for the calendar and event form */
+.calendar-container {
+  margin: 50px auto;
+  width: 600px;
 }
 
-.course-content-description {
-  margin: 1em;
+.calendar {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.course-content-description a {
-  color: #fff;
-  padding: 0.5rem;
+.calendar th,
+.calendar td {
+  width: 14.28%;
+  height: 50px;
   text-align: center;
-  text-decoration: none;
-  background: linear-gradient(0deg, #50c8c8, #4158d0);
-  transition: all 0.5s ease-out;
-  border-radius: 5px;
+  vertical-align: middle;
+  border: 1px solid #ddd;
 }
 
-.course-content-description a:hover,
-a:focus {
-  color: #fff;
-  background: linear-gradient(-135deg, #50c8c8, #abb4e6);
+.event-form {
+  margin: 30px auto;
+  width: 300px;
 }
 
-
-/* Course Content */
-.upload-section{
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  padding: 20px;
-  background: #ffffff;
+.event-form h2 {
+  margin-bottom: 10px;
 }
 
-.upload-form {
-    margin-top: 20px;
+.event-form .form-group {
+  margin-bottom: 15px;
 }
 
-.upload-form h2 {
-    margin-bottom: 10px;
+.event-form label {
+  display: block;
 }
 
-.upload-form label {
-    display: block;
-    margin-bottom: 5px;
+.event-form input[type="text"],
+.event-form input[type="date"],
+.event-form input[type="time"] {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
 }
 
-.upload-form input[type="text"],
-.upload-form select {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-}
-
-.upload-form input[type="file"] {
-    margin-bottom: 10px;
-}
-
-.choose-file{
-  background: linear-gradient(0deg, #50c8c8, #4158d0);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.upload-form button[type="submit"] {
-    background: linear-gradient(0deg, #50c8c8, #4158d0);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.upload-form button[type="submit"]:hover {
-  background: linear-gradient(-135deg, #50c8c8, #abb4e6);
-  transition: 0.7s;
-}
-
-.delete-btn-course {
-  background: linear-gradient(0deg, #50c8c8, #4158d0);
-  color: #ffffff;
-  padding: 9px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.delete-btn-course:hover {
-  background: linear-gradient(-135deg, #50c8c8, #abb4e6);
-  transition: 0.7s;
-}
-
-.course-title {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.course-content-title {
+.event-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
   font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
-

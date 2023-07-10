@@ -5,22 +5,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Edit Profile | Bestlink College of The Philippines</title>
+    <link rel = "icon" href = "{{ url_for('static', filename='images/logo.png') }}"
+    type = "image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <!-- Boxicons CSS -->
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
   </head>
-  <body>
+  <body style="background: linear-gradient(135deg, #50c8c8, #4c7be7);">
     <nav class="sidebar locked">
       <div class="logo_items flex">
         <span class="nav_image">
           <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo_img" />
         </span>
         <span class="logo_name">BCP</span>
-        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
-        <i class="bx bx-x" id="sidebar-close"></i>
       </div>
 
       <div class="menu_container">
@@ -37,9 +37,9 @@
               </a>
             </li>
             <li class="item">
-              <a href="#" class="link flex">
-                <i class="bx bx-grid-alt"></i>
-                <span>Courses</span>
+              <a href="/courses" class="link flex">
+                <i class="#"><iconify-icon icon="bx:book"></iconify-icon></i>
+                <span>Lessons</span>
               </a>
             </li>
           </ul>
@@ -70,7 +70,7 @@
               <img src="{{ url_for('static', filename='images/pfp.png') }}" alt="logo_img" />
             </span>
             <div class="data_text">
-              <span class="name">{{ user[3] }}</span>
+              <span class="name">{{ user[3] }}</span><br>
               <span class="email">{{ user[6] }}</span>
             </div>
           </div>
@@ -78,21 +78,22 @@
     </nav>
 
     
-
+<section class="student-container">
         <div class="container">
-          <center> <h1>Welcome, {{ user[1] }}!</h1>
+            
+          <center> <h1>Hello, {{ user[3] }}!</h1>
+            <h2>User Details</h2><br></center>
             {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                <div class="flash-messages">
-                  {% for message in messages %}
-                    <div class="flash-message {{ message[1] }}">{{ message[0] }}</div>
-                  {% endfor %}
-                </div>
-              {% endif %}
-            {% endwith %}
-            <h2>User Details</h2></center>
+            {% if messages %}
+              <div class="flash-messages">
+                {% for message in messages %}
+                  <div class="flash-message {{ message[1] }}">{{ message[0] }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
         <!-- Student Profile -->
-        <form action="/update" method="POST">
+        <form action="/update_admin" method="POST">
 <div class="student-profile py-4">
   <div class="container">
     <div class="row">
@@ -106,49 +107,48 @@
       <div class="col-lg-8">
         <div class="card shadow-sm">
           <div class="card-header bg-transparent border-0">
-            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3><br>
           </div>
           <div class="card-body pt-0">
             <table class="table table-bordered">
               <tr>
                 <th width="30%">Full Name</th>
                 <td width="2%">:</td>
-                <td><input type="text" id="full_name" name="full_name" value="{{ user[3] }}" required></td>
+                <td><input type="text" id="full_name" name="full_name" value="{{ user[3] }}" readonly></td>
               </tr>
               <tr>
                 <th width="30%">Username</th>
                 <td width="2%">:</td>
-                <td><input type="text" id="username" name="username" value="{{ user[1] }}" required></td>
+                <td><input type="text" id="username" name="username" value="{{ user[1] }}" readonly></td>
               </tr>
               <tr>
                 <th width="30%">Password	</th>
                 <td width="2%">:</td>
-                <td><input type="password" id="password" name="password" value="" required></td>
+                <td><input type="password" id="password" name="password" placeholder="Enter New Password" required></td>
               </tr>
               <tr>
                 <th width="30%">Confirm Password</th>
                 <td width="2%">:</td>
-                <td><input type="password" id="confirm_password" name="confirm_password" value="" required></td>
+                <td><input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm New Password" required></td>
               </tr>
               <tr>
                 <th width="30%">Contact Number</th>
                 <td width="2%">:</td>
-                <td><input type="text" id="contact_number" name="contact_number" value="{{ user[7] }}" required></td>
+                <td><input type="text" id="contact_number" name="contact_number" placeholder="{{ user[7] }}" required></td>
               </tr>
               <tr>
                 <th width="30%">Email</th>
                 <td width="2%">:</td>
-                <td><input type="email" id="email" name="email" value="{{ user[6] }}" required></td>
+                <td><input type="email" id="email" name="email" placeholder="{{ user[6] }}" required></td>
               </tr>
               <tr>
                 <th width="30%">Address</th>
                 <td width="2%">:</td>
-                <td><input type="textarea" id="address" name="address" value="{{ user[5] }}" required></td>
+                <td><input type="text" id="address" name="address" placeholder="{{ user[5] }}" required width="50px"></td>
               </tr>
-            </table>
+            </table><br>
             <center>
-              <button type="submit" class="btn">Update</button>
-              <h1><a href="/update" style="text-decoration: none; color: black;">Edit Profile</a></h1>
+              <button type="submit" class="btnu">Update</button>
             </center>
           </div>
         </div>
@@ -157,7 +157,7 @@
   </div>
 </div>
 </div>
-
+</section>
 
   </body>
 </html>

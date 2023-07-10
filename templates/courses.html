@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Lessons | Bestlink College of The Philippines</title>
+    <link rel = "icon" href = "{{ url_for('static', filename='images/logo.png') }}"
+    type = "image/x-icon">
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style-courses.css') }}"
@@ -20,7 +22,7 @@
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
   </head>
 
-  <body>
+  <body style="background: linear-gradient(135deg, #50c8c8, #4c7be7);">
     <nav class="sidebar locked">
       <div class="logo_items flex">
         <span class="nav_image">
@@ -30,8 +32,6 @@
           />
         </span>
         <span class="logo_name">BCP</span>
-        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
-        <i class="bx bx-x" id="sidebar-close"></i>
       </div>
 
       <div class="menu_container">
@@ -49,8 +49,8 @@
             </li>
             <li class="item">
               <a href="#" class="link flex">
-                <i class="bx bx-grid-alt"></i>
-                <span>Courses</span>
+                <i class="#"><iconify-icon icon="bx:book"></iconify-icon></i>
+                <span>Lessons</span>
               </a>
             </li>
           </ul>
@@ -94,58 +94,50 @@
       </div>
     </nav>
 
-    <section class="home-section">
+    
+    <section class="home-section">  
       <div class="container">
-        <div class="title">CPE 221</div>
+        <div class="title">CPE 221 - Software Design</div>
         <div class="course-container">
+          {% for week in weeks_cpe221 %}  
           <div class="course">
-            <div class="course-title">Week 1</div>
+            <div class="course-title">{{ week[0] }}</div>
+            {% for content in get_contents_cpe221(week[0], 'CPE 221') %}
             <div class="course-content">
-              <div class="course-content-title">Content Title 1</div>
+              <div class="course-content-title">{{ content[0] }}</div>
               <div class="course-content-description">
-                <a href="/fec_week1">Read Week - 1</a>
+                <a href="/read_pdf/{{ content[1] }}">Read Lesson {{ content[2] }}</a>
               </div>
             </div>
+            {% endfor %}
           </div>
-
-          <div class="course">
-            <div class="course-title">Week 2</div>
-            <div class="course-content">
-              <div class="course-content-title">Content Title 2</div>
-              <div class="course-content-description">
-                <a href="/fec_week2">Read Week - 2</a>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </section>
 
+
     <section class="home-section">
       <div class="container">
-        <div class="title">CPE 222</div>
+        <div class="title">CPE 222 - Fundamentals of Electronics Circuits</div>
         <div class="course-container">
+          {% for week in weeks_cpe222 %}
           <div class="course">
-            <div class="course-title">Week 1</div>
+            <div class="course-title">{{ week[0] }}</div>
+            {% for content in get_contents_cpe222(week[0], 'CPE 222') %}
             <div class="course-content">
-              <div class="course-content-title">Content Title 1</div>
+              <div class="course-content-title">{{ content[0] }}</div>
               <div class="course-content-description">
-                <a href="/sd_week1">Read Week - 1</a>
+                <a href="/read_pdf/{{ content[1] }}">Read Lesson {{ content[2] }}</a>
               </div>
             </div>
+            {% endfor %}
           </div>
-
-          <div class="course">
-            <div class="course-title">Week 2</div>
-            <div class="course-content">
-              <div class="course-content-title">Content Title 2</div>
-              <div class="course-content-description">
-                <a href="/sd_week2">Read Week - 2</a>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </section>
+  
+
   </body>
 </html>

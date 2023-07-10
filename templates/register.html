@@ -3,83 +3,107 @@
   <head>
     <meta charset="UTF-8">
     <title> User Registration | Bestlink College of The Philippines </title>
+    <link rel = "icon" href = "{{ url_for('static', filename='images/logo.png') }}"
+    type = "image/x-icon">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <style>
+      #role {
+        padding: 8px 12px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        color: #333;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        font-size: 16px;
+        width: 100%;
+      }
+     </style>
    </head>
 <body class="regs">
-  <div class="container">
-    <div class="title"><h1>User Registration</h1>
-      <center>
-      {% with messages = get_flashed_messages() %}
-          {% if messages %}
-              <div class="alert">
-                  {% for message in messages %}
-                      {{ message }}
-                  {% endfor %}
-              </div>
-          {% endif %}
-      {% endwith %}</center></div>
-    <div class="content">
-      <form method="POST" action="/register">
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details">Full Name</span>
-            <input type="text" placeholder="Enter your full name" id="full_name" name="full_name" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Username</span>
-            <input type="text" placeholder="Enter your username" id="username" name="username" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Password</span>
-            <input type="password" placeholder="Enter your password" id="password" name="password" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Confirm Password</span>
-            <input type="password" placeholder="Confirm your password" id="confirm_password" name="confirm_password" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Email</span>
-            <input type="email" placeholder="Enter your email" id="email" name="email" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your contact number" id="contact_number" name="contact_number" required>
-          </div> 
-          <div class="input-box">
-            <span class="details">Address</span>
-            <input type="textarea" placeholder="Enter your address" name="address" required>
-          </div> 
-        </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1" value="Male">
-          <input type="radio" name="gender" id="dot-2" value="Female">
-          <span class="gender-title">Gender</span>
-          <div class="category">
-            <label for="dot-1">
-            <span class="dot one"></span>
-            <span class="gender">Male</span>
-          </label>
-          <label for="dot-2">
-            <span class="dot two"></span>
-            <span class="gender">Female</span>
-          </label>
-          </div>
-        </div>
-        {% if is_admin %}
-        <center>
-        <div class="input-box">
-          <span class="details">Is Admin</span>
-          <input type="checkbox" id="is_admin" name="is_admin">
-        </div>
-        </center>
-        {% endif %}
-        <div class="button">
-          <input type="submit" value="Register" class="btn">
-        </div>
-      </form>
-    </div>
-  </div>
 
+  <section class="student-container">
+    <div class="container">
+      <a href="/admin_dashboard">
+        <iconify-icon icon="ep:back" class="link" style="font-size: 50px;"></iconify-icon>
+        <span></span>
+      </a>
+      <div class="title"><h1>User Registration</h1>
+        <center>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}</center></div>
+      <div class="content">
+        <form method="POST" action="/register">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input type="text" placeholder="Enter your full name" id="full_name" name="full_name" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input type="text" placeholder="Enter your username" id="username" name="username" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input type="password" placeholder="Enter your password" id="password" name="password" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              <input type="password" placeholder="Confirm your password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="email" placeholder="Enter your email" id="email" name="email" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="text" placeholder="Enter your contact number" id="contact_number" name="contact_number" required>
+            </div> 
+            <div class="input-box">
+              <span class="details">Address</span>
+              <input type="textarea" placeholder="Enter your address" name="address" required>
+            </div> 
+            {% if is_admin %}
+            <div class="input-box">
+              <span class="details">Role </span>
+              <select id="role" name="role">  
+                <option value="#" disabled selected>Select your option</option>
+                <option value="0" {% if not is_admin %}selected{% endif %}>Student</option>
+                <option value="1" {% if is_admin %}selected{% endif %}>Admin</option>     
+              </select>
+            </div>
+            {% endif %}
+          </div>
+          <div class="gender-details">
+            <input type="radio" name="gender" id="dot-1" value="Male">
+            <input type="radio" name="gender" id="dot-2" value="Female">
+            <span class="gender-title">Gender</span>
+            <div class="category">
+              <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+            </div>
+          </div>
+
+          <div class="button">
+            <input type="submit" value="Register" class="btn">
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

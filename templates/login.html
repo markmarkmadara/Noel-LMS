@@ -3,40 +3,91 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>User Login</title>
+    <title>User Login | Bestlink College of The Philippines</title>
+    <link rel = "icon" href = "{{ url_for('static', filename='images/logo.png') }}"
+    type = "image/x-icon">
     <link
       rel="stylesheet"
       type="text/css"
       href="{{ url_for('static', filename='styles.css') }}"
     />
+    <style>
+      .login-whole {
+        display: grid;
+        padding-bottom: 5%;
+        place-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(-135deg, #50c8c8, #4158d0);
+      }
+
+      .login-container {
+        display: grid;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .bcp-lms-container {
+        text-align: center;
+        background: linear-gradient(-135deg, #50c8c8, #4158d0);
+        border-color: rgba(0, 0, 0, 0.685);
+        border-style: solid;
+        padding: 50px;
+        border-radius: 10px;  
+        color: #fff;
+      }
+
+      .bcp-lms-heading {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+
+      .bcp-lms-description {
+        font-size: 18px;
+      }
+    </style>
   </head>
-  <body>
-    <div class="wrapper">
-      <div class="title">Login Form</div>
-      <center>
-        {% with messages = get_flashed_messages() %} {% if messages %}
-        <div class="alert">
-          {% for message in messages %} {{ message }} {% endfor %}
-        </div>
-        {% endif %} {% endwith %}
-      </center>
-      <form method="POST" action="/">
-        <div class="field">
-          <input type="text" id="username" name="username" required />
-          <label>Username</label>
-        </div>
-        <div class="field">
-          <input type="password" id="password" name="password" required />
-          <label>Password</label>
-        </div>
-        <div class="content"></div>
-        <div class="field">
-          <input type="submit" value="Login" />
-        </div>
-        <div class="signup-link">
-          Don't have an account? <a href="/register">Register Now</a>
-        </div>
-      </form>
-    </div>
+  <body style="background: linear-gradient(135deg, #50c8c8, #4c7be7);">
+    
+    <section class="login-whole">
+      <section class="login-contents">
+        <section class="bcp-lms-container">
+          <div class="bcp-lms-content">
+            <h1 class="bcp-lms-heading">BCP Learning Management System</h1>
+            <p class="bcp-lms-description">Welcome to the BCP LMS. Log in to access your account.</p>
+          </div>
+        </section>
+
+        <section class="student-container">
+          <div class="wrapper">
+            <div class="title">Login</div>
+            <center>
+              {% with messages = get_flashed_messages() %} {% if messages %}
+              <div class="alert">
+                {% for message in messages %} {{ message }} {% endfor %}
+              </div>
+              {% endif %} {% endwith %}
+            </center>
+            <form method="POST" action="/">
+              <div class="field">
+                <input type="text" id="username" name="username" required />
+                <label>Username</label>
+              </div>
+              <div class="field">
+                <input type="password" id="password" name="password" required />
+                <label>Password</label>
+              </div>
+              <div class="content"></div>
+              <div class="field">
+                <input type="submit" value="Login" />
+              </div>
+            </form>
+          </div>
+        </section>
+      </section>
+    </section>
   </body>
 </html>

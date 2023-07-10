@@ -5,22 +5,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Admin User List | Bestlink College of The Philippines</title>
+    <link rel = "icon" href = "{{ url_for('static', filename='images/logo.png') }}"
+            type = "image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <!-- Boxicons CSS -->
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
   </head>
-  <body>
+  <body style="background: linear-gradient(135deg, #50c8c8, #4c7be7);">
     <nav class="sidebar locked">
       <div class="logo_items flex">
         <span class="nav_image">
           <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo_img" />
         </span>
         <span class="logo_name">BCP</span>
-        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
-        <i class="bx bx-x" id="sidebar-close"></i>
       </div>
 
       <div class="menu_container">
@@ -38,14 +38,14 @@
             </li>
             <li class="item">
               <a href="/admin_courses" class="link flex">
-                <i class="bx bx-grid-alt"></i>
-                <span>Courses</span>
+                <i class="#"><iconify-icon icon="bx:book"></iconify-icon></i>
+                <span>Lessons</span>
               </a>
             </li>
             <li class="item">
               <a href="/admin_students" class="link flex">
-                <i class="bx:user"><iconify-icon icon="bx:user"></iconify-icon></i>
-                <span>Students Lists</span>
+                <i class="#"><iconify-icon icon="ph:user-list" style="font-size: 28px;"></iconify-icon></i>
+                <span>User Lists</span>
               </a>
             </li>
           </ul>
@@ -63,8 +63,8 @@
             </li>
             <li class="item">
                 <a href="/register" class="link flex">
-                  <i class="bx:user"><iconify-icon icon="bx:user"></iconify-icon></i>
-                  <span>Register Admin</span>
+                  <i class="bx:user"><iconify-icon icon="mdi:register-outline" style="font-size: 28px;"></iconify-icon></i>
+                  <span>Register User</span>
                 </a>
               </li>
             <li class="item">
@@ -82,38 +82,64 @@
               <img src="{{ url_for('static', filename='images/pfp.png') }}" alt="logo_img" />
             </span>
             <div class="data_text">
-              <span class="name">{{ user[3] }}</span>
+              <span class="name">{{ user[3] }}</span><br>
               <span class="email">{{ user[6] }}</span>
             </div>
           </div>
       </div>
     </nav>
 
+    <section class="student-container">
+      <center>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}</center>
     <div class="container">
-        <h1 class="user-heading">Current Students</h1>
-
-        <table class="user-table">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Contact Number</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in users %}
-                <tr>
-                    <td>{{ user[1] }}</td>  <!-- Username -->
-                    <td>{{ user[3] }}</td>  <!-- Full Name -->
-                    <td>{{ user[6] }}</td>  <!-- Email -->
-                    <td>{{ user[7] }}</td>  <!-- Contact Number -->
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    
-    </div>
-
+      <h1 class="user-heading">Current Users</h1>
+      <table class="user-table">
+          <thead>
+              <tr>
+                  <th>Username</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for user in users %}
+              <tr>
+                  <td>{{ user[1] }}</td>
+                  <td>{{ user[3] }}</td>
+                  <td>{{ user[6] }}</td>
+                  <td>{{ "Admin" if user[8] else "Student" }}</td>
+                    <td>
+                        <div class="edit-delete-container">
+                            <form class="edit-form" action="/edit_user_role" method="POST">
+                                <input type="hidden" name="user_id" value="{{ user[0] }}">
+                                <select name="new_role">
+                                    <option value="0" {% if not user[8] %}selected{% endif %}>Student</option>
+                                    <option value="1" {% if user[8] %}selected{% endif %}>Admin</option>
+                                </select>
+                                <button type="submit">Edit</button>
+                            </form>
+                            <form class="delete-form" action="/delete_user" method="POST">
+                                <input type="hidden" name="user_id" value="{{ user[0] }}">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+</section>
   </body>
 </html>
